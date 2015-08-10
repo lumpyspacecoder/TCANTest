@@ -1,0 +1,180 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '--save', 'togeojson' ]
+2 info using npm@2.1.7
+3 info using node@v0.10.26
+4 silly cache add args [ 'togeojson', null ]
+5 verbose cache add spec togeojson
+6 silly cache add parsed spec { raw: 'togeojson',
+6 silly cache add   scope: null,
+6 silly cache add   name: 'togeojson',
+6 silly cache add   rawSpec: '',
+6 silly cache add   spec: '*',
+6 silly cache add   type: 'range' }
+7 verbose addNamed togeojson@*
+8 silly addNamed semver.valid null
+9 silly addNamed semver.validRange *
+10 silly addNameRange { name: 'togeojson', range: '*', hasData: false }
+11 silly mapToRegistry name togeojson
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry https://registry.npmjs.org/
+14 silly mapToRegistry uri https://registry.npmjs.org/togeojson
+15 verbose addNameRange registry:https://registry.npmjs.org/togeojson not in flight; fetching
+16 verbose request uri https://registry.npmjs.org/togeojson
+17 verbose request no auth needed
+18 info attempt registry request try #1 at 14:34:56
+19 verbose request id 439544bfade1c64c
+20 http request GET https://registry.npmjs.org/togeojson
+21 http 200 https://registry.npmjs.org/togeojson
+22 silly get cb [ 200,
+22 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+22 silly get     etag: '"CPLTT6SJ826V8F9EQGMZJ2TXK"',
+22 silly get     'content-type': 'application/json',
+22 silly get     'cache-control': 'max-age=60',
+22 silly get     'content-length': '37391',
+22 silly get     'accept-ranges': 'bytes',
+22 silly get     date: 'Fri, 07 Aug 2015 19:34:57 GMT',
+22 silly get     via: '1.1 varnish',
+22 silly get     age: '0',
+22 silly get     connection: 'keep-alive',
+22 silly get     'x-served-by': 'cache-dfw1826-DFW',
+22 silly get     'x-cache': 'MISS',
+22 silly get     'x-cache-hits': '0',
+22 silly get     'x-timer': 'S1438976096.981388,VS0,VE139',
+22 silly get     vary: 'Accept' } ]
+23 silly addNameRange number 2 { name: 'togeojson', range: '*', hasData: true }
+24 silly addNameRange versions [ 'togeojson',
+24 silly addNameRange   [ '0.0.0',
+24 silly addNameRange     '0.0.1',
+24 silly addNameRange     '0.1.0',
+24 silly addNameRange     '0.1.1',
+24 silly addNameRange     '0.2.1',
+24 silly addNameRange     '0.3.0',
+24 silly addNameRange     '0.4.0',
+24 silly addNameRange     '0.4.1',
+24 silly addNameRange     '0.4.2',
+24 silly addNameRange     '0.5.0',
+24 silly addNameRange     '0.6.0',
+24 silly addNameRange     '0.7.0',
+24 silly addNameRange     '0.8.0',
+24 silly addNameRange     '0.9.0',
+24 silly addNameRange     '0.10.0',
+24 silly addNameRange     '0.10.1',
+24 silly addNameRange     '0.11.0',
+24 silly addNameRange     '0.11.1',
+24 silly addNameRange     '0.12.0',
+24 silly addNameRange     '0.12.1',
+24 silly addNameRange     '0.12.2' ] ]
+25 verbose addNamed togeojson@0.12.2
+26 silly addNamed semver.valid 0.12.2
+27 silly addNamed semver.validRange 0.12.2
+28 silly mapToRegistry name togeojson
+29 silly mapToRegistry using default registry
+30 silly mapToRegistry registry https://registry.npmjs.org/
+31 silly mapToRegistry uri https://registry.npmjs.org/togeojson
+32 verbose addRemoteTarball https://registry.npmjs.org/togeojson/-/togeojson-0.12.2.tgz not in flight; adding
+33 verbose addRemoteTarball [ 'https://registry.npmjs.org/togeojson/-/togeojson-0.12.2.tgz',
+33 verbose addRemoteTarball   '2b77047065e6dd8ec5d593157e99fab82d3d80ab' ]
+34 info retry fetch attempt 1 at 14:34:57
+35 info attempt registry request try #1 at 14:34:57
+36 http fetch GET https://registry.npmjs.org/togeojson/-/togeojson-0.12.2.tgz
+37 http fetch 200 https://registry.npmjs.org/togeojson/-/togeojson-0.12.2.tgz
+38 silly fetchAndShaCheck shasum 2b77047065e6dd8ec5d593157e99fab82d3d80ab
+39 verbose addTmpTarball /var/folders/h1/rnny6gbd6q5g7sbmdv617ms8072pqr/T/npm-23230-df306f9b/registry.npmjs.org/togeojson/-/togeojson-0.12.2.tgz not in flight; adding
+40 verbose addTmpTarball already have metadata; skipping unpack for togeojson@0.12.2
+41 silly cache afterAdd togeojson@0.12.2
+42 verbose afterAdd /Users/nbhossai/.npm/togeojson/0.12.2/package/package.json not in flight; writing
+43 verbose afterAdd /Users/nbhossai/.npm/togeojson/0.12.2/package/package.json written
+44 silly install resolved [ { name: 'togeojson',
+44 silly install resolved     version: '0.12.2',
+44 silly install resolved     description: 'convert KML and GPX to GeoJSON',
+44 silly install resolved     main: 'togeojson.js',
+44 silly install resolved     directories: { test: 'test' },
+44 silly install resolved     scripts:
+44 silly install resolved      { test: 'tape test/*.js',
+44 silly install resolved        cov: 'istanbul cover test/index.js && coveralls < ./coverage/lcov.info',
+44 silly install resolved        browser: 'browserify -t brfs test/index.js > test/bundle.js' },
+44 silly install resolved     devDependencies:
+44 silly install resolved      { brfs: '~0.2.1',
+44 silly install resolved        coveralls: '~2.10.0',
+44 silly install resolved        glob: '^4.2.1',
+44 silly install resolved        istanbul: '~0.2.11',
+44 silly install resolved        tape: '~3.0.3' },
+44 silly install resolved     bin: { togeojson: 'togeojson' },
+44 silly install resolved     repository: { type: 'git', url: 'git://github.com/mapbox/togeojson.git' },
+44 silly install resolved     browser: { xmldom: false },
+44 silly install resolved     browserify: { transform: [Object] },
+44 silly install resolved     license: 'BSD',
+44 silly install resolved     dependencies:
+44 silly install resolved      { xmldom: '~0.1.19',
+44 silly install resolved        'concat-stream': '~1.4.5',
+44 silly install resolved        minimist: '0.0.8' },
+44 silly install resolved     keywords:
+44 silly install resolved      [ 'kml',
+44 silly install resolved        'geojson',
+44 silly install resolved        'gpx',
+44 silly install resolved        'geo',
+44 silly install resolved        'parser',
+44 silly install resolved        'formatter',
+44 silly install resolved        'input',
+44 silly install resolved        'leaflet',
+44 silly install resolved        'maps' ],
+44 silly install resolved     gitHead: '4d0482ab89b6532c361946ebd0dfb4e41bc7b741',
+44 silly install resolved     bugs: { url: 'https://github.com/mapbox/togeojson/issues' },
+44 silly install resolved     homepage: 'https://github.com/mapbox/togeojson',
+44 silly install resolved     _id: 'togeojson@0.12.2',
+44 silly install resolved     _shasum: '2b77047065e6dd8ec5d593157e99fab82d3d80ab',
+44 silly install resolved     _from: 'togeojson@*',
+44 silly install resolved     _npmVersion: '1.4.28',
+44 silly install resolved     _npmUser: { name: 'tmcw', email: 'tom@macwright.org' },
+44 silly install resolved     maintainers:
+44 silly install resolved      [ [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object],
+44 silly install resolved        [Object] ],
+44 silly install resolved     dist:
+44 silly install resolved      { shasum: '2b77047065e6dd8ec5d593157e99fab82d3d80ab',
+44 silly install resolved        tarball: 'http://registry.npmjs.org/togeojson/-/togeojson-0.12.2.tgz' },
+44 silly install resolved     _resolved: 'https://registry.npmjs.org/togeojson/-/togeojson-0.12.2.tgz' } ]
+45 info install togeojson@0.12.2 into /Users/nbhossai/Documents/TCANTest
+46 info installOne togeojson@0.12.2
+47 verbose installOne of togeojson to /Users/nbhossai/Documents/TCANTest not in flight; installing
+48 warn locking Error: EACCES, open '/Users/nbhossai/.npm/_locks/togeojson-e95afdb1dfda43f4.lock'
+48 warn locking  /Users/nbhossai/.npm/_locks/togeojson-e95afdb1dfda43f4.lock failed { [Error: EACCES, open '/Users/nbhossai/.npm/_locks/togeojson-e95afdb1dfda43f4.lock']
+48 warn locking   errno: 3,
+48 warn locking   code: 'EACCES',
+48 warn locking   path: '/Users/nbhossai/.npm/_locks/togeojson-e95afdb1dfda43f4.lock' }
+49 verbose stack Error: Attempt to unlock /Users/nbhossai/Documents/TCANTest/node_modules/togeojson, which hasn't been locked
+49 verbose stack     at unlock (/usr/local/lib/node_modules/npm/lib/utils/locker.js:66:11)
+49 verbose stack     at cb (/usr/local/lib/node_modules/npm/lib/install.js:929:5)
+49 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:933:20
+49 verbose stack     at /usr/local/lib/node_modules/npm/lib/utils/locker.js:40:9
+49 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:149:38)
+49 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:177:38
+49 verbose stack     at Object.oncomplete (fs.js:107:15)
+50 verbose cwd /Users/nbhossai/Documents/TCANTest
+51 error Darwin 14.4.0
+52 error argv "node" "/usr/local/bin/npm" "install" "--save" "togeojson"
+53 error node v0.10.26
+54 error npm  v2.1.7
+55 error Attempt to unlock /Users/nbhossai/Documents/TCANTest/node_modules/togeojson, which hasn't been locked
+56 error If you need help, you may report this error at:
+56 error     <http://github.com/npm/npm/issues>
+57 verbose exit [ 1, true ]

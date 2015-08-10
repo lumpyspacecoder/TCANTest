@@ -1,0 +1,38 @@
+{
+  "version": "0.12.2",
+  "main": "togeojson.js",
+  "repo": "git://github.com/mapbox/togeojson.git",
+  "keywords": [
+    "kml",
+    "geojson",
+    "gpx",
+    "geo",
+    "parser",
+    "formatter",
+    "input",
+    "leaflet",
+    "maps"
+  ],
+  "description": "convert KML and GPX to GeoJSON",
+  "name": "togeojson",
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "test",
+    "css",
+    "*.md",
+    "index.html",
+    "package.json"
+  ],
+  "homepage": "https://github.com/mapbox/togeojson",
+  "_release": "0.12.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.12.2",
+    "commit": "a094067626744710aedecc93daa9c4a927b35f4e"
+  },
+  "_source": "git://github.com/mapbox/togeojson.git",
+  "_target": "~0.12.2",
+  "_originalSource": "togeojson",
+  "_direct": true
+}
