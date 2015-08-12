@@ -15,6 +15,10 @@ gmaps = {
     
     markerlist: [],
     
+    sampleLoc: null,
+    
+    polygon: null,
+    
     aqiIndexNoReading: {color: '000000', label: 'black', opacity: 0.3,  desc: 'No Reading'},  
   
   // over-written in initialization by Drupal.settings value from CMS.
@@ -159,7 +163,7 @@ gmaps = {
     });
         this.initGMap();
         this.initLoadbar();
-       this.initColorGradient();
+//       this.initColorGradient();
         this.initTooltip();
         this.initTooltipRight();
   //      this.initDeeplink();
@@ -252,63 +256,63 @@ gmaps = {
    */
 
 
-  initColorGradient: function() {
-  
-    var start = false;
-    var end = false;
-    var startX = 0;
-    var endX = 0;
-    for(x in this.aqiIndex) {
-      if (!start){
-        start = this.aqiIndex[x].color;
-        startX = x;
-        continue;
-      }
-      if (!end) {
-        end = this.aqiIndex[x].color;
-        endX = x;
-        
-        var object = $.extend({}, this.gradientIndex, this.getGradient(start, end, startX, endX));
-
-        start = end;
-        startX = endX;
-        end = false;
-        continue;
-      }
-    }
+//  initColorGradient: function() {
+//  
+//    var start = false;
+//    var end = false;
+//    var startX = 0;
+//    var endX = 0;
+//    for(x in this.aqiIndex) {
+//      if (!start){
+//        start = this.aqiIndex[x].color;
+//        startX = x;
+//        continue;
+//      }
+//      if (!end) {
+//        end = this.aqiIndex[x].color;
+//        endX = x;
+//        
+//        var object = $.extend({}, this.gradientIndex, this.getGradient(start, end, startX, endX));
+//
+//        start = end;
+//        startX = endX;
+//        end = false;
+//        continue;
+//      }
+//    }
       
      
     // quick fix.
 //	$.extend(this.gradientIndex, this.getGradient(start, start, startX, 256));
  //   this.gradientIndex[this.gradientIndex.length] = '7C0000';
 
-  },
+  
     
 
   
-  getGradient: function(start, end, startX, endX) {
-    Session.get('start');
-    Session.get('end');
-    Session.get('startX');
-    Session.get('256')
-    rainbow.setColours(start, end);
-
-    var steps = Number(endX) - Number(startX);
-
-    rainbow.setNumberRange(0, steps);
-    
-    var array = [];
-
-    var j = Number(startX);
-
-    for(i=0;i<steps;i++) {
-      array[j] = rainbow.colourAt(i);
-      j++;
-    }
-    
-    return array;
-  },
-  
+//  getGradient: function(start, end, startX, endX) {
+//    Session.get('start');
+//    Session.get('end');
+//    Session.get('startX');
+//    Session.get('256')
+//    rainbow.setColours(start, end);
+//
+//    var steps = Number(endX) - Number(startX);
+//
+//    rainbow.setNumberRange(0, steps);
+//    
+//    var array = [];
+//
+//    var j = Number(startX);
+//
+//    for(i=0;i<steps;i++) {
+//      array[j] = rainbow.colourAt(i);
+//      j++;
+//    }
+//    
+//    return array;
+//  },
+//  
   initTooltip: function() {
     $('body').append('<div id="ozone-tooltip"><div id="ozone-tooltip-content"></div>');
     this.tooltip = $('#ozone-tooltip');
@@ -444,7 +448,6 @@ gmaps = {
             };        
         
         map= new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-        console.log(map);
         var rendererOptions = {
             map: map
         }
@@ -454,19 +457,24 @@ gmaps = {
        directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
        this.directionsService = new google.maps.DirectionsService();  
         
-        map.data.addGeoJson(txShapes);
-        map.data.setStyle({opacity:0.0, fillOpacity: 0.0, color: "purple"});
-        Session.get(aMarker);
-        map.data.forEach(function(feature) {
-             var resultColor = google.maps.geometry.poly.containsLocation(aMarker.latlng, Polygon) ? 'red' : 'purple';
-            map.data.setStyle({color: resultColor});
-        });
-                         
+                   
         
         
         // global flag saying we intialized already
         Session.set('map', true);
         
+    },
+    initPolyLines: function(aMarker){
+         map.data.addGeoJson(txShapes);
+        map.data.setStyle({opacity:0.0, fillOpacity: 0.0, strokeColor: "purple"}); 
+        map.data.forEach(function(feature) {
+             sampleLoc = new google.maps.LatLng(aMarker.lat,aMarker.lng);
+            polygon = new google.maps.Data.Polygon(feature.getGeometry().getArray());
+             var resultColor = google.maps.geometry.poly.containsLocation(sampleLoc, polygon) ? 'red' : 'purple';
+            map.data.setStyle({fillColor: resultColor});
+            console.log(resultColor);
+        })
+    
     },
     
      

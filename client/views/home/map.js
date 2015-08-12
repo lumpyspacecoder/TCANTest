@@ -20,15 +20,14 @@ Template.map.rendered = function() {
         
         histories.forEach(function (aHistory)
                         {
-                            d = new Date(0);
-                            d.setUTCSeconds(aHistory.epoch);
+//                            d = new Date(0);
+//                            d.setUTCSeconds(aHistory.epoch);
                             markerInfo = 'ID: ' + aHistory.siteID + '<br/>' +
-                                        'Ozone Level: ' + aHistory.o3 + '<br/>' +
-                                        'Time: ' + d;
+                                        'Ozone Level: ' + aHistory.o3;
                             
                         } );   
         
-        zips.showZips();
+        
 
         
         _.each(sites, function(aSite,aHistory) {           
@@ -40,7 +39,7 @@ Template.map.rendered = function() {
                     content: markerInfo
                 };
                 gmaps.markerlist.push(aMarker);
-                zips.addZip(aMarker);
+            gmaps.initPolyLines(aMarker);
                 
             
             
