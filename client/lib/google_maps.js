@@ -456,6 +456,12 @@ gmaps = {
         
         map.data.addGeoJson(txShapes);
         map.data.setStyle({opacity:0.0, fillOpacity: 0.0, color: "purple"});
+        Session.get(aMarker);
+        map.data.forEach(function(feature) {
+             var resultColor = google.maps.geometry.poly.containsLocation(aMarker.latlng, Polygon) ? 'red' : 'purple';
+            map.data.setStyle({color: resultColor});
+        });
+                         
         
         
         // global flag saying we intialized already
