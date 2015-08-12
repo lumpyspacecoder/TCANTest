@@ -1,5 +1,3 @@
-Meteor.subscribe('sample'); 
-
 gmaps = {
     // map object
     map: null,
@@ -15,10 +13,12 @@ gmaps = {
     
     markerArray: [],
     
-    aqiIndexNoReading : { color: '000000', label: 'black', opacity: 0.3,  desc: 'No Reading'},  
+    markerlist: [],
+    
+    aqiIndexNoReading: {color: '000000', label: 'black', opacity: 0.3,  desc: 'No Reading'},  
   
   // over-written in initialization by Drupal.settings value from CMS.
-  aqiIndex : {  0: { color: '3FAE4A', label: 'green', opacity: 0.45, title: 'Good'},
+  aqiIndex: {  0: { color: '3FAE4A', label: 'green', opacity: 0.45, title: 'Good'},
                60: { color: 'F6EC26', label: 'yellow', opacity: 0.45, title: 'Moderate'},
                76: { color: 'EE5828', label: 'orange', opacity: 0.45, title: 'Warning'},
                96: { color: 'B8212B', label: 'red', opacity: 0.45, title: 'Unhealthy'},
@@ -59,25 +59,25 @@ gmaps = {
     testMarker : 'tests/poi.js',
     testMarkerURL : 'tests/poi-data.js',
 
-  baseApiUrl : '/',
-  flatContourBaseURL: 'generatedcontour/',
-  markerURL: 'ozone-viewer-api/point.php',
-  contourURL: 'ozone-viewer-api/contour.php',
+    baseApiUrl : '/',
+    flatContourBaseURL: 'generatedcontour/',
+    markerURL: 'ozone-viewer-api/point.php',
+    contourURL: 'ozone-viewer-api/contour.php',
 
 
-  contourNum : 6,
-  contourRes : 300, // 5 minute resolution
-  bandSchema : 4,
+    contourNum : 6,
+    contourRes : 300, // 5 minute resolution
+    bandSchema : 4,
 
-  contourEndTS : 1301558400,
-  contourStartTS : null,
+    contourEndTS : 1301558400,
+    contourStartTS : null,
 
-  markerEndTS : 1301558400,
-  markerStartTS : null,
-  markerNumber : 1,
-  markerLag : 1800, // 30 minutes behind
+    markerEndTS : 1301558400,
+    markerStartTS : null,
+    markerNumber : 1,
+    markerLag : 1800, // 30 minutes behind
   
-  defaultTimeSpan: 3600,
+    defaultTimeSpan: 3600,
   
   lowerBoundHour : 6,
   upperBoundHour : 22,
@@ -454,9 +454,10 @@ gmaps = {
        directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
        this.directionsService = new google.maps.DirectionsService();  
         
-       var zips = map.data.addGeoJson(txShapes);
-    zips.setStyle({fillOpacity:0.0, stroke: .2, opacity: .1});
-
+        map.data.addGeoJson(txShapes);
+        map.data.setStyle({opacity:0.0, fillOpacity: 0.0, color: "purple"});
+        
+        
         // global flag saying we intialized already
         Session.set('map', true);
         

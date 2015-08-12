@@ -28,6 +28,9 @@ Template.map.rendered = function() {
                             
                         } );   
         
+        zips.showZips();
+
+        
         _.each(sites, function(aSite,aHistory) {           
           //      var markerInfo= 'ID: ' + aSite.siteID + '<br/>';
                 var aMarker = {
@@ -36,7 +39,8 @@ Template.map.rendered = function() {
                     title: aSite.Name,
                     content: markerInfo
                 };
-                gmaps.addMarker(aMarker);
+                gmaps.markerlist.push(aMarker);
+                zips.addZip(aMarker);
                 
             
             
