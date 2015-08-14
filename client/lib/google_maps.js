@@ -17,7 +17,7 @@ gmaps = {
     
     sampleLoc: null,
     
-    polygon: null,
+    paths: [],
     
     aqiIndexNoReading: {color: '000000', label: 'black', opacity: 0.3,  desc: 'No Reading'},  
   
@@ -468,11 +468,10 @@ gmaps = {
          map.data.addGeoJson(txShapes);
         map.data.setStyle({opacity:0.0, fillOpacity: 0.0, strokeColor: "purple"}); 
         map.data.forEach(function(feature) {
-             sampleLoc = new google.maps.LatLng(aMarker.lat,aMarker.lng);
-            polygon = new google.maps.Data.Polygon(feature.getGeometry().getArray());
-             var resultColor = google.maps.geometry.poly.containsLocation(sampleLoc, polygon) ? 'red' : 'purple';
-            map.data.setStyle({fillColor: resultColor});
-            console.log(resultColor);
+             this.sampleLoc = new google.maps.LatLng(aMarker.lat,aMarker.lng);
+            this.polygon = new google.maps.Data.Polygon(feature.getGeometry().getArray());
+            
+            
         })
     
     },

@@ -14,3 +14,4 @@ mizzao:jquery-ui
 d3
 d3js:d3
 geojson-utils
+dburles:google-maps
