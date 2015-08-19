@@ -4,47 +4,61 @@
 Template.map.rendered = function() {
     if (! Session.get('map'))
         gmaps.initialize();
+   
      
     
     // keep updating info on map with changes in database
     Tracker.autorun(function() {
-       
-       Meteor.subscribe('ibhsites');
-        Meteor.subscribe('sample');
-        
-        
+        region = '12';
+       Meteor.subscribe('sites',region);
         var sites = Sites.find({}).fetch();
-        var siteIds = sites.map(function(p) {return p.siteID});
-        
-        var histories= History.find({siteID: {$in: siteIds}}, {epoch: {sort:1}}).fetch() ;
-        
-        histories.forEach(function (aHistory)
-                        {
-//                            d = new Date(0);
-//                            d.setUTCSeconds(aHistory.epoch);
-                            markerInfo = 'ID: ' + aHistory.siteID + '<br/>' +
-                                        'Ozone Level: ' + aHistory.o3;
+        var markerInfo = null;
+        var ozones = null;
+        sites.forEach(function(aSite) {           
+            currentID = aSite.siteID;
+            time = 1420070400;
+            Meteor.subscribe('sitesdata',currentID,time);
+            var ozones = History.find({}).fetch();
+            ozones.forEach(function (aHistory)
+            {
+                    if(currentID == aHistory.siteID)
+                    {
+                            this.markerInfo = 'ID: ' + aHistory.siteID + '<br/>' + 'Ozone Level: ' + aHistory.o3+ '<br/>' + 'Time: ' + aHistory.epoch;
                             
-                        } );   
+                    }
+   
+            
+            
+                 var aMarker = {
+                    lat: aSite.loc[1],
+                    lng: aSite.loc[0],
+                    title: aSite.Name,
+                    siteID: aSite.siteID,
+                    content: this.markerInfo
+                };
+            
+            
+              
+            
+            gmaps.addMarker(aMarker);
+            
+            
+            });   
+            
+               
+        }); 
+        
+        Meteor.subscribe('shapes');
+        var shapes = Shapes.find({}).fetch();
+        
+        
+                 
+         
         
         
 
         
-        _.each(sites, function(aSite,aHistory) {           
-          //      var markerInfo= 'ID: ' + aSite.siteID + '<br/>';
-                var aMarker = {
-                    lat: aSite.loc[1],
-                    lng: aSite.loc[0],
-                    title: aSite.Name,
-                    content: markerInfo
-                };
-                gmaps.markerlist.push(aMarker);
-            gmaps.initPolyLines(aMarker);
-                
-            
-            
-        }); 
-        
+    
         
     });
     

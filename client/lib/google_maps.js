@@ -464,17 +464,8 @@ gmaps = {
         Session.set('map', true);
         
     },
-    initPolyLines: function(aMarker){
-         map.data.addGeoJson(txShapes);
-        map.data.setStyle({opacity:0.0, fillOpacity: 0.0, strokeColor: "purple"}); 
-        map.data.forEach(function(feature) {
-             this.sampleLoc = new google.maps.LatLng(aMarker.lat,aMarker.lng);
-            this.polygon = new google.maps.Data.Polygon(feature.getGeometry().getArray());
-            
-            
-        })
-    
-    },
+
+
     
      
         findlocation: function() {
@@ -511,11 +502,12 @@ gmaps = {
         
         },
     
-        addMarker: function(aMarker)
+    
+        addMarker: function(i)
     {
         var marker = new google.maps.Marker({
                 map: map,
-                position: new google.maps.LatLng(aMarker.lat, aMarker.lng),
+                position: new google.maps.LatLng(i.lat, i.lng),
     
             });
         
@@ -523,7 +515,7 @@ gmaps = {
             google.maps.event.addListener(marker, 'click', function() {
             // Open an info window when the marker is clicked on,
             // containing the text of the step.
-            display.setContent(aMarker.content);
+            display.setContent(i.content);
             display.open(map, marker);
             
         });
@@ -531,6 +523,8 @@ gmaps = {
         
 
     },
+    
+     
     
        
     

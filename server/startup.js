@@ -4120,7 +4120,7 @@ Meteor.startup(function() {
             Sites.insert(aSite);
         });
         
-        Sites._ensureIndex({loc: '2d'});
+        Sites._ensureIndex({siteID: 1});
         
     }
     
@@ -36670,7 +36670,7 @@ Meteor.startup(function() {
             History.insert(aHistory);
         });
         
-        History._ensureIndex({siteID: '2d'});
+        History._ensureIndex({siteID:1});
         
     }
         
